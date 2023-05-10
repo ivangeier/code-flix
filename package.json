@@ -1,0 +1,19 @@
+{
+  "name": "catalogue-admin-api",
+  "version": "1.0.0",
+  "description": "video admin catalogue app",
+  "main": "index.js",
+  "scripts": {
+    "ts-node": "ts-node",
+    "tsc": "tsc",
+    "clean:tsc": "rm tsconfig.tsbuildinfo"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.1.2",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.4"
+  }
+}
