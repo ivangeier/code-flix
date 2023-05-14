@@ -6,4 +6,3 @@ services:
     container_name: code-flix-typescript-app
     volumes:
       - .docker/zsh/powerlevel10k/.p10k.zsh:/home/node/.p10k.zsh:delegated
-      - ./.docker/zsh/history:/home/node/zsh:delegated

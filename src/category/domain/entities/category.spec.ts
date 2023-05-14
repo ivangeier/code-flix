@@ -1,6 +1,6 @@
 import { omit } from "lodash";
 import { CategoriesProps, Category } from "./category";
-import UniqueEntityId from "../../../@seedworks/domain/unique-entity-id.vo";
+import UniqueEntityId from "../../../@seedworks/domain/value-objects/unique-entity-id.vo";
 
 describe("Category Unit Tests", () => {
   test("Constructor of category", () => {

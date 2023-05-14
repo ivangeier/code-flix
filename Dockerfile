@@ -21,8 +21,6 @@ RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/
     -p https://github.com/zsh-users/zsh-autosuggestions \
     -a 'export TERM=xterm-256color'
 
-RUN echo '[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh' >> ~/.zshrc \
-    echo 'HISTFILE=/home/node/zsh/.zsh_history' >> ~/.zshrc
-
+RUN echo '[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh' >> ~/.zshrc
 
 CMD [ "sh", "-c", "npm install && tail -f /dev/null" ]
