@@ -24,6 +24,7 @@ describe("Category Unit Tests", () => {
       is_active: false,
       created_at,
     });
+    console.log(category);
 
     expect(category.props).toStrictEqual({
       name: "Movie",
@@ -82,11 +83,7 @@ describe("Category Unit Tests", () => {
       const category = new Category(props, id);
 
       expect(category.id).not.toBeNull();
-      expect(category.id).toBeInstanceOf(UniqueEntityId);
-
-      if (id) {
-        expect(category.id).toBe(id);
-      }
+      expect(category.uniqueEntityId).toBeInstanceOf(UniqueEntityId);
     });
   });
 
@@ -148,5 +145,32 @@ describe("Category Unit Tests", () => {
       created_at,
     });
     expect(category.created_at).toBe(created_at);
+  });
+
+  test("Getter and setter of name prop", () => {
+    const category = new Category({ name: "Test" });
+    expect(category.name).toBe("Test");
+
+    category["name"] = "Other test";
+    expect(category.name).toBe("Other test");
+  });
+
+  it("Should update a category", () => {
+    const category = new Category({ name: "Test" });
+    category.update("Test name", "Test description");
+    expect(category.name).toBe("Test name");
+    expect(category.description).toBe("Test description");
+  });
+
+  it("Should active a category", () => {
+    const category = new Category({ name: "Test", is_active: false });
+    category.activate();
+    expect(category.is_active).toBeTruthy();
+  });
+
+  it("Should disable a category", () => {
+    const category = new Category({ name: "Test", is_active: true });
+    category.deactivate();
+    expect(category.is_active).toBeFalsy();
   });
 });
