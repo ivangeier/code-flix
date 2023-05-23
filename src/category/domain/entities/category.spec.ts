@@ -3,11 +3,16 @@ import { CategoriesProps, Category } from "./category";
 import UniqueEntityId from "../../../@seedworks/domain/value-objects/unique-entity-id.vo";
 
 describe("Category Unit Tests", () => {
+  beforeEach(() => {
+    Category.validate = jest.fn();
+  });
   test("Constructor of category", () => {
     // TEST - ONLY NAME
     let category = new Category({ name: "Movie" });
 
     const props = omit(category.props, "created_at");
+
+    expect(Category.validate).toBeCalled();
 
     expect(props).toStrictEqual({
       name: "Movie",
@@ -24,7 +29,6 @@ describe("Category Unit Tests", () => {
       is_active: false,
       created_at,
     });
-    console.log(category);
 
     expect(category.props).toStrictEqual({
       name: "Movie",
@@ -158,6 +162,7 @@ describe("Category Unit Tests", () => {
   it("Should update a category", () => {
     const category = new Category({ name: "Test" });
     category.update("Test name", "Test description");
+    expect(Category.validate).toBeCalledTimes(2);
     expect(category.name).toBe("Test name");
     expect(category.description).toBe("Test description");
   });
